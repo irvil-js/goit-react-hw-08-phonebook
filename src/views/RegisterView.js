@@ -51,7 +51,7 @@ const RegisterView = () => {
           className={styles.input}
           value={email}
           type="email"
-          placeholder="Email"
+          placeholder="user@gmail.com"
           name="email"
         />
       </label>
@@ -62,7 +62,7 @@ const RegisterView = () => {
           className={styles.input}
           value={password}
           type="password"
-          placeholder="Password"
+          placeholder="at least 8 characters"
           name="password"
         />
       </label>
