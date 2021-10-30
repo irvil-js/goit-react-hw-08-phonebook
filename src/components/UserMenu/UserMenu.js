@@ -15,7 +15,7 @@ const UserMenu = () => {
         className={styles.avatar}
       />
 
-      <span className={s.name}>Добро пожаловать, {name}!</span>
+      <span className={styles.name}>Добро пожаловать, {name}!</span>
 
       <button
         className={styles.button}

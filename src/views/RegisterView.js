@@ -32,7 +32,7 @@ const RegisterView = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={s.form} autoComplete="off">
+    <form onSubmit={handleSubmit} className={styles.form} autoComplete="off">
       <label className={styles.label}>
         Name
         <input

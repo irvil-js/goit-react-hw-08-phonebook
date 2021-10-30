@@ -12,14 +12,14 @@ const Navigation = () => {
         exact
         to="/"
         activeClassName={styles.activeLink}
-        className={s.link}
+        className={styles.link}
       >
         Home
       </NavLink>
       {isLoggedIn && (
         <NavLink
           to="/contact"
-          activeClassName={s.activeLink}
+          activeClassName={styles.activeLink}
           className={styles.link}
         >
           Contact

@@ -1,13 +1,13 @@
 import { Switch } from 'react-router-dom';
 import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { authOperations, authSelectors } from 'redux/auth';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Container } from '@material-ui/core';
 import AppBar from 'components/AppBar';
 import Loader from 'components/Loader';
-import PrivateRoute from 'component/sPrivateRoute';
+import PrivateRoute from 'components/PrivateRoute';
 import PublicRoute from 'components/PublicRoute';
 
 const HomeView = lazy(() =>
