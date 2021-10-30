@@ -30,7 +30,7 @@ const LoginView = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form} autoComplete="off">
+    <form onSubmit={handleSubmit} className={styles.form} autoComplete="on">
       <label className={styles.label}>
         Email
         <input

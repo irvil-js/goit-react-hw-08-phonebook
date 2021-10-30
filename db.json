@@ -4,6 +4,11 @@
       "name": "rita",
       "number": "+380 1234567",
       "id": 1
+    },
+    {
+      "name": "karacatiza",
+      "number": "+380 765432",
+      "id": 2
     }
   ]
 }

@@ -9,10 +9,7 @@
   flex-direction: column;
   margin-bottom: 10px;
 }
-/* .input {
-  background-color: rgb(201, 200, 200);
-  color: white;
-} */
+
 .container {
   min-height: calc(100vh-50px);
   display: flex;
@@ -21,6 +18,11 @@
 }
 .title {
   font-weight: 500;
-  font-style: 48;
+  font-size: 48px;
   text-align: center;
+  margin-top: 200px;
+  color: black;
+  background-color: aquamarine;
+  box-shadow: inset 0px 2px 4px -1px rgba(0, 0, 0, 0.4),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.4), 0px 1px 10px 0px rgba(0, 0, 0, 0.4);
 }

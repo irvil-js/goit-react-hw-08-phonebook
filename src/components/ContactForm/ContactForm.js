@@ -7,7 +7,6 @@ import styles from './ContactForm.module.css';
 import PhoneInput, {
   formatPhoneNumberIntl,
 } from 'react-phone-number-input/input';
-// import 'react-phone-number-input/style.css';
 
 export default function ContactForm() {
   const items = useSelector(getItems);
@@ -33,7 +32,7 @@ export default function ContactForm() {
   const handleNameChange = event => {
     setName(event.target.value);
   };
-  const hendleNumberChange = event => {
+  const handleNumberChange = event => {
     const value = formatPhoneNumberIntl(String(event));
     setNumber(value);
   };
@@ -79,21 +78,10 @@ export default function ContactForm() {
           placeholder="Name contact"
           name="name"
           value={name}
-          // onChange={handleInputChange}
           onChange={handleNameChange}
         />
       </label>
-      {/* <label className={s.label}>
-        Number
-        <input
-          className={s.input}
-          type="tel"
-          name="number"
-          placeholder="Number contact"
-          value={number}
-          onChange={handleInputChange}
-        />
-      </label> */}
+
       <label className={styles.label} htmlFor="formNumber">
         Number
         <PhoneInput
@@ -103,7 +91,7 @@ export default function ContactForm() {
           value={number}
           name="number"
           placeholder="Number contact"
-          onChange={hendleNumberChange}
+          onChange={handleNumberChange}
         />
       </label>
 
