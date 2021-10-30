@@ -1,31 +1,42 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { getItems } from 'redux/phonebook';
-import { addContact } from 'redux/phonebook';
+import { getItems, addContact } from 'redux/phonebook';
 import styles from './ContactForm.module.css';
 
-function ContactForm() {
+import PhoneInput, {
+  formatPhoneNumberIntl,
+} from 'react-phone-number-input/input';
+// import 'react-phone-number-input/style.css';
+
+export default function ContactForm() {
   const items = useSelector(getItems);
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const handleChange = event => {
-    const { name, value } = event.target;
+  // const handleInputChange = event => {
+  //   const { name, value } = event.target;
 
-    switch (name) {
-      case 'name':
-        setName(value);
-        break;
-      case 'number':
-        setNumber(value);
-        break;
-      default:
-        return;
-    }
+  //   switch (name) {
+  //     case 'name':
+  //       setName(value);
+  //       break;
+  //     case 'number':
+  //       setNumber(value);
+  //       break;
+  //     default:
+  //       return;
+  //   }
+  // };
+
+  const handleNameChange = event => {
+    setName(event.target.value);
   };
-
+  const hendleNumberChange = event => {
+    const value = formatPhoneNumberIntl(String(event));
+    setNumber(value);
+  };
   const repeatContact = name => {
     const repeatName = name.toLowerCase();
     return items.find(contact => contact.name === repeatName);
@@ -68,18 +79,31 @@ function ContactForm() {
           placeholder="Name contact"
           name="name"
           value={name}
-          onChange={handleChange}
+          // onChange={handleInputChange}
+          onChange={handleNameChange}
         />
       </label>
-      <label className={styles.label}>
+      {/* <label className={s.label}>
         Number
         <input
-          className={styles.input}
-          type="number"
+          className={s.input}
+          type="tel"
           name="number"
           placeholder="Number contact"
           value={number}
-          onChange={handleChange}
+          onChange={handleInputChange}
+        />
+      </label> */}
+      <label className={styles.label} htmlFor="formNumber">
+        Number
+        <PhoneInput
+          className={styles.input}
+          defaultCountry="UA"
+          id="formNumber"
+          value={number}
+          name="number"
+          placeholder="Number contact"
+          onChange={hendleNumberChange}
         />
       </label>
 
@@ -89,5 +113,3 @@ function ContactForm() {
     </form>
   );
 }
-
-export default ContactForm;
