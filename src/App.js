@@ -1,56 +1,78 @@
-import { useSelector } from 'react-redux';
-import ContactForm from './components/ContactForm';
-import Filter from './components/Filter';
-import ContactList from './components/ContactList';
-import Section from './components/Section';
-import { getLoading, getError, getItems } from 'redux/phonebook';
+import { Switch } from 'react-router-dom';
+import { lazy, Suspense, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import Loader from 'react-loader-spinner';
-import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import styles from './App.module.css';
+import { Container } from '@material-ui/core';
+import AppBar from 'components/AppBar';
+import Loader from 'components/Loader';
+import PrivateRoute from 'component/sPrivateRoute';
+import PublicRoute from 'components/PublicRoute';
+
+const HomeView = lazy(() =>
+  import('views/HomeView' /* webpackChunkName: "HomeView" */),
+);
+const PhonebookView = lazy(() =>
+  import('views/PhonebookView' /* webpackChunkName: "PhonebookView" */),
+);
+const RegisterView = lazy(() =>
+  import('views/RegisterView' /* webpackChunkName: "RegisterView" */),
+);
+const LoginView = lazy(() =>
+  import('views/LoginView' /* webpackChunkName: "LoginView" */),
+);
+const NotFoundView = lazy(() =>
+  import('views/NotFoundView' /* webpackChunkName: "NotFoundView" */),
+);
 
 export default function App() {
-  const loading = useSelector(getLoading);
-  const error = useSelector(getError);
-  const visibleFilter = useSelector(getItems);
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(authSelectors.getInFetchingCurrent);
+
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
 
   return (
-    <div className={styles.wrapper}>
-      {error && <h1 className="error">{error.message}</h1>}
-      {!error && (
-        <Section title="Phonebook">
-          <ContactForm />
-          {/* <h2>Contact</h2> */}
+    !isRefreshing && (
+      <Container>
+        <AppBar />
+        <Suspense fallback={<Loader />}>
+          <Switch>
+            <PublicRoute path="/" exact>
+              <HomeView />
+            </PublicRoute>
 
-          {visibleFilter.length > 1 && <Filter />}
+            <PrivateRoute path="/contact" exact redirectTo="/login">
+              <PhonebookView />
+            </PrivateRoute>
 
-          {loading && (
-            <Loader
-              className="loader"
-              type="Audio"
-              color="#464646"
-              height={40}
-              width={40}
-              timeout={3000} //3 secs
-            />
-          )}
+            <PublicRoute path="/register" restricted>
+              <RegisterView />
+            </PublicRoute>
 
-          <ContactList />
-          <ToastContainer
-            position="top-right"
-            autoClose={3000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
-        </Section>
-      )}
-    </div>
+            <PublicRoute path="/login" restricted redirectTo="/contact">
+              <LoginView />
+            </PublicRoute>
+
+            <PublicRoute>
+              <NotFoundView />
+            </PublicRoute>
+          </Switch>
+        </Suspense>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      </Container>
+    )
   );
 }
