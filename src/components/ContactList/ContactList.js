@@ -19,7 +19,7 @@ function ContactList() {
 
   return (
     <section>
-      <h2>Contact</h2>
+      <h2>Contacts</h2>
 
       <ul className={styles.list}>
         {contacts.map(({ id, name, number }) => (
