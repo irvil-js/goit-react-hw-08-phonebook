@@ -1,5 +1,5 @@
-const NotFoundView = () => {
-  return <h1>404 Страница не найдена :(</h1>;
-};
+// const NotFoundView = () => {
+//   return <h1>404 Страница не найдена :(</h1>;
+// };
 
-export default NotFoundView;
+// export default NotFoundView;

@@ -22,9 +22,9 @@ const RegisterView = lazy(() =>
 const LoginView = lazy(() =>
   import('views/LoginView' /* webpackChunkName: "LoginView" */),
 );
-const NotFoundView = lazy(() =>
-  import('views/NotFoundView' /* webpackChunkName: "NotFoundView" */),
-);
+// const NotFoundView = lazy(() =>
+//   import('views/NotFoundView' /* webpackChunkName: "NotFoundView" */),
+// );
 
 export default function App() {
   const dispatch = useDispatch();
