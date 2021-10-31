@@ -56,9 +56,9 @@ export default function App() {
               <LoginView />
             </PublicRoute>
 
-            <PublicRoute>
+            {/* <PublicRoute>
               <NotFoundView />
-            </PublicRoute>
+            </PublicRoute> */}
           </Switch>
         </Suspense>
         <ToastContainer
