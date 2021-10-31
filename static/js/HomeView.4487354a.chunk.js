@@ -1,2 +1,0 @@
-(this["webpackJsonpgoit-react-hw-08-phonebook"]=this["webpackJsonpgoit-react-hw-08-phonebook"]||[]).push([[0],{133:function(e,t,o){e.exports={form:"stylesView_form__2GAsN",label:"stylesView_label__32PLu",container:"stylesView_container__3SUXA",title:"stylesView_title__3A_Y3"}},145:function(e,t,o){"use strict";o.r(t);var s=o(133),i=o.n(s),n=o(2);t.default=function(){return Object(n.jsx)("div",{className:i.a.container,children:Object(n.jsx)("h1",{className:i.a.title,children:"Welcome! Notebook of your contacts"})})}}}]);
-//# sourceMappingURL=HomeView.4487354a.chunk.js.map
