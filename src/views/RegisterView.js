@@ -66,7 +66,7 @@ const RegisterView = () => {
           name="password"
         />
       </label>
-      <button type="submit"> Register</button>
+      <button type="submit"> Sign up</button>
     </form>
   );
 };

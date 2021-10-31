@@ -1,7 +1,7 @@
-import styles from './stylesView.module.css';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from '../redux/auth';
+import styles from './stylesView.module.css';
 
 const LoginView = () => {
   const dispatch = useDispatch();
@@ -30,31 +30,36 @@ const LoginView = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form} autoComplete="on">
-      <label className={styles.label}>
-        Email
-        <input
-          onChange={handleChange}
-          className={styles.input}
-          value={email}
-          type="email"
-          placeholder="Email"
-          name="email"
-        />
-      </label>
-      <label className={styles.label}>
-        Password
-        <input
-          onChange={handleChange}
-          className={styles.input}
-          value={password}
-          type="password"
-          placeholder="Password"
-          name="password"
-        />
-      </label>
-      <button type="submit"> LogIn</button>
-    </form>
+    <div className={styles.formBox}>
+      <form onSubmit={handleSubmit} className={styles.form} autoComplete="on">
+        <label className={styles.label}>
+          Email
+          <input
+            onChange={handleChange}
+            className={styles.input}
+            value={email}
+            type="email"
+            placeholder="user@gmail.com"
+            name="email"
+          />
+        </label>
+        <label className={styles.label}>
+          Password
+          <input
+            onChange={handleChange}
+            className={styles.input}
+            value={password}
+            type="password"
+            placeholder="at least 8 characters"
+            name="password"
+          />
+        </label>
+        <button className={styles.button} type="submit">
+          {' '}
+          LogIn
+        </button>
+      </form>
+    </div>
   );
 };
 export default LoginView;
